@@ -68,8 +68,13 @@ it('can save without a path to overwrite the original file', function (ImageDriv
 
     $driver->loadFile($targetFile)->greyscale()->save();
 
+    [$expectedWidth, $expectedHeight] = getimagesize(getTestJpg());
+    [$width, $height] = getimagesize($targetFile);
+
     expect($targetFile)->toBeFile();
     expect($targetFile)->toHaveMime('image/jpeg');
+    expect($width)->toBe($expectedWidth);
+    expect($height)->toBe($expectedHeight);
 })->with('drivers');
 
 it('works with transparent pngs', function (ImageDriver $driver) {

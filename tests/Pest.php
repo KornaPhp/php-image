@@ -59,6 +59,7 @@ function assertImageType(string $filePath, $expectedType): void
 dataset('drivers', [
     'imagick' => [Image::useImageDriver('imagick')],
     'gd' => [Image::useImageDriver('gd')],
+    'vips' => [Image::useImageDriver('vips')],
 ]);
 
 class CustomDriver extends ImagickDriver
